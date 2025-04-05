@@ -1,21 +1,41 @@
 <template>
-  <nav class="py-6 bg-red-500">
-    <div class="container mx-auto px-4">
-      <ul class="flex gap-4">
-        <RouterLink :to="{ name: 'PlayerView' }" class="text-white" active-class="text-yellow-500">
-          PlayerView
-        </RouterLink>
-        <RouterLink :to="{ name: 'RoleView' }" class="text-white" active-class="text-yellow-500">
-          RoleView
-        </RouterLink>
-        <RouterLink :to="{ name: 'GameView' }" class="text-white" active-class="text-yellow-500">
-          GameView
-        </RouterLink>
-      </ul>
-    </div>
-  </nav>
-  <RouterView />
+  <div class="min-h-screen bg-slate-900 text-white font-sans">
+    <!-- Navbar -->
+    <nav class="bg-red-600 shadow-md">
+      <div class="container mx-auto px-4">
+        <ul class="flex gap-6 py-4 justify-center">
+          <RouterLink
+            :to="{ name: 'PlayerView' }"
+            class="px-4 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300"
+            active-class="font-bold shadow-md text-yellow-300"
+          >
+            👤 بازیکنان
+          </RouterLink>
+          <RouterLink
+            :to="{ name: 'RoleView' }"
+            class="px-4 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300"
+            active-class="font-bold shadow-md text-yellow-300"
+          >
+            🎭 نقش‌ها
+          </RouterLink>
+          <RouterLink
+            :to="{ name: 'GameView' }"
+            class="px-4 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300"
+            active-class="font-bold shadow-md text-yellow-300"
+          >
+            🕹️ شروع بازی
+          </RouterLink>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-6">
+      <RouterView />
+    </main>
+  </div>
 </template>
+
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 </script>

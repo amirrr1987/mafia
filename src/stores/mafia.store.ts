@@ -1,12 +1,9 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+export const useMafiaStore = defineStore('mafia', () => {
+  const players = ref<string[]>([])
+  const roles = ref<string[]>([])
 
-  return { count, doubleCount, increment }
+  return { players, roles }
 })

@@ -22,11 +22,35 @@ export const useMafiaStore = defineStore('mafia', () => {
       team: 'citizen',
     },
     {
+      name: 'کارگاه',
+      team: 'citizen',
+    },
+    {
+      name: 'تک‌ تیرانداز',
+      team: 'citizen',
+    },
+    {
+      name: 'زره‌پوش',
+      team: 'citizen',
+    },
+    {
+      name: 'اوشن',
+      team: 'citizen',
+    },
+    {
       name: 'ساده',
       team: 'citizen',
     },
     {
       name: 'ریيس',
+      team: 'mafia',
+    },
+    {
+      name: 'مذاکره‌کننده',
+      team: 'mafia',
+    },
+    {
+      name: 'گروگان‌گیر',
       team: 'mafia',
     },
   ])

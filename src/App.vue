@@ -1,5 +1,7 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-white font-sans">
+  <div
+    class="min-h-screen grid grid-rows-[max-content_1fr_max-content] bg-slate-900 text-white font-sans"
+  >
     <!-- Navbar -->
     <nav class="bg-red-600 shadow-md">
       <div class="container mx-auto px-4">
@@ -33,6 +35,7 @@
     <main class="py-6">
       <RouterView />
     </main>
+    <footer class="text-center py-6">طراحی شده توسط امیر مقامی</footer>
   </div>
 </template>
 

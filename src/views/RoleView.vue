@@ -71,13 +71,13 @@
 <script setup lang="ts">
 import IconAdd from '@/components/icons/IconAdd.vue'
 import IconRemove from '@/components/icons/IconRemove.vue'
-import { useMafiaStore } from '@/stores/mafia.store'
+import { useMafiaStore, type TeamType } from '@/stores/mafia.store'
 import { ref } from 'vue'
 
 const mafiaStore = useMafiaStore()
 
 const newRole = ref('')
-const newTeam = ref('')
+const newTeam = ref<TeamType | ''>('')
 
 const addNewRole = () => {
   const name = newRole.value.trim()

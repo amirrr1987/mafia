@@ -2,12 +2,13 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { shuffle } from 'lodash'
 
-interface Role {
+export type TeamType = 'citizen' | 'mafia'
+export interface Role {
   name: string
-  team: 'citizen' | 'mafia'
+  team: TeamType
 }
 
-interface GamePlayer {
+export interface GamePlayer {
   name: string
   role: Role
 }

@@ -13,7 +13,7 @@ interface GamePlayer {
 }
 
 export const useMafiaStore = defineStore('mafia', () => {
-  const players = ref<string[]>(['امیر','علی','سما', 'ستایش','زهرا','شهداد'])
+  const players = ref<string[]>(['امیر','علی','سما', 'ستایش','زهرا','شهداد','شهریار','هانی','امین','فاطمه','امیر‌حسین','فرشته'])
 
   const roles = ref<Role[]>([
     {

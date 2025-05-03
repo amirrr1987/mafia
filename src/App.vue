@@ -8,24 +8,27 @@
         <ul class="flex gap-6 py-4 justify-center">
           <RouterLink
             :to="{ name: 'PlayerView' }"
-            class="px-4 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300"
+            class="px-4 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300 text-center"
             active-class="font-bold shadow-md text-yellow-300"
           >
-            👤 بازیکنان
+            👤
+            <div>بازیکنان</div>
           </RouterLink>
           <RouterLink
             :to="{ name: 'RoleView' }"
-            class="px-4 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300"
-            active-class="font-bold shadow-md text-yellow-300"
+            class="px-2 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300 text-center"
+            active-class="font-bold shadow-md text-yellow-300  border border-yellow"
           >
-            🎭 نقش‌ها
+            🎭
+            <div>نقش‌ها</div>
           </RouterLink>
           <RouterLink
             :to="{ name: 'GameView' }"
-            class="px-4 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300"
+            class="px-2 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300 text-center"
             active-class="font-bold shadow-md text-yellow-300"
           >
-            🕹️ شروع بازی
+            🕹️
+            <div>شروع بازی</div>
           </RouterLink>
         </ul>
       </div>

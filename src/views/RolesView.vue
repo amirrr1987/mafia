@@ -8,7 +8,7 @@
           :value="role.role"
           class="w-full"
         >
-          <RoleCard class="text-wrap" :title="role.label">
+          <RoleCard class="text-wrap" :title="role.label" :avatar="role.avatar">
             <div @click.stop="toggleExpanded(index)">
               {{ truncate(role.description, { length: isExpanded(index) ? 100000 : 100 }) }}
             </div>

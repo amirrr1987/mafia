@@ -3,23 +3,21 @@ import { ref } from 'vue'
 export const enum SideEnum {
   CIVIC = 'civic',
   MAFIA = 'mafia',
-  NEUTRAL = 'neutral',
 }
 
-export const enum RoleEnum {
-  MAFIA_BOSS = 'mafia_boss',
-  MAFIA = 'mafia',
+export const enum MafiaRoleEnum {
+  MAFIA_BOSS = 'mafia boss',
+  HOSTAGE_TAKER = 'hostage taker',
+  NEGOTIATOR = 'negotiator',
+  MAFIA = 'simple mafia',
+}
+
+export const enum CivicRoleEnum {
   DOCTOR = 'doctor',
   DETECTIVE = 'detective',
   CIVILIAN = 'civilian',
   SNIPER = 'sniper',
-  SILENCER = 'silencer',
-  JOKER = 'joker',
-  BODYGUARD = 'bodyguard',
-  LAWYER = 'lawyer',
-  GODFATHER = 'godfather',
-  NURSE = 'nurse',
-  PSYCHOLOGIST = 'psychologist',
+  BULLETPROOF = 'bulletproof',
 }
 
 export interface IRole {

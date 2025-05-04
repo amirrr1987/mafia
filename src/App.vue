@@ -1,47 +1,51 @@
 <template>
-  <div
-    class="min-h-screen grid grid-rows-[max-content_1fr_max-content] bg-slate-900 text-white font-sans"
+  <ConfigProvider
+    :componentSize="settingsStore.settings.componentSize"
+    :direction="settingsStore.settings.direction"
+    :locale="settingsStore.locale"
+    :theme="settingsStore.theme"
+    :ref="settingsStore.fullscreen.appRef"
   >
-    <!-- Navbar -->
-    <nav class="bg-red-600 shadow-md">
-      <div class="container mx-auto px-4">
-        <ul class="flex gap-6 py-4 justify-center">
-          <RouterLink
-            :to="{ name: 'PlayerView' }"
-            class="px-4 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300 text-center"
-            active-class="font-bold shadow-md text-yellow-300"
-          >
-            👤
-            <div>بازیکنان</div>
-          </RouterLink>
-          <RouterLink
-            :to="{ name: 'RoleView' }"
-            class="px-2 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300 text-center"
-            active-class="font-bold shadow-md text-yellow-300  border border-yellow"
-          >
-            🎭
-            <div>نقش‌ها</div>
-          </RouterLink>
-          <RouterLink
-            :to="{ name: 'GameView' }"
-            class="px-2 py-2 rounded-md text-lg transition hover:bg-red-700 hover:text-yellow-300 text-center"
-            active-class="font-bold shadow-md text-yellow-300"
-          >
-            🕹️
-            <div>شروع بازی</div>
-          </RouterLink>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="py-6">
-      <RouterView />
-    </main>
-    <footer class="text-center py-6">طراحی شده توسط امیر مقامی</footer>
-  </div>
+    <RouterView />
+  </ConfigProvider>
 </template>
 
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+<script lang="ts" setup>
+import { ConfigProvider } from 'ant-design-vue/es'
+import { RouterView } from 'vue-router'
+import { useSettingsStore } from '@/stores/settings.store'
+import { computed, onMounted, watch } from 'vue'
+import { useCssVariables } from '@/composable/cssVariables.composable'
+const { updateColors } = useCssVariables()
+
+const settingsStore = useSettingsStore()
+
+onMounted(() => updateColors(settingsStore.settings.colorPrimary))
+watch(
+  () => settingsStore.settings.colorPrimary,
+  (newColor) => {
+    updateColors(newColor)
+  },
+)
+
+onMounted(settingsStore.setLanguageConfig)
+watch(() => settingsStore.settings.language, settingsStore.setLanguageConfig, {
+  immediate: true,
+})
+
+const appElement = computed<HTMLElement>(
+  () => document.getElementById('app') ?? ({} as HTMLElement),
+)
+
+const setDarkMode = () => {
+  if (settingsStore.settings.isDark) {
+    appElement.value.classList.add('dark')
+    appElement.value.classList.add('bg-dark')
+  } else {
+    appElement.value.classList.remove('dark')
+    appElement.value.classList.remove('bg-dark')
+  }
+}
+onMounted(setDarkMode)
+watch(() => settingsStore.settings.isDark, setDarkMode)
 </script>

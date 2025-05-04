@@ -3,15 +3,15 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
-import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import UnoCSS from 'unocss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
-    tailwindcss(),
+    UnoCSS(),
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
@@ -19,38 +19,23 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
       },
       manifest: {
-        name: 'بازی مافیا',
-        short_name: 'مافیا',
-        description: 'یک بازی گروهی هیجان‌انگیز برای شبیه‌سازی جنگ مافیا',
-        theme_color: '#ff0000', // رنگ تم (مثلا قرمز)
-        background_color: '#ffffff', // رنگ پس‌زمینه
+        name: 'پنل مدیریت | فروشگاه امیر',
+        short_name: 'فروشگاه امیر',
+        description: 'مدیریت و فروش محصولات با امکانات کامل',
+        theme_color: '#ffffff',
+        background_color: '#000000',
+        display: 'fullscreen',
         start_url: '/',
-        display: 'standalone',
         icons: [
           {
-            src: '/android-chrome-192x192.png', // آیکن 192x192 برای موبایل
+            src: '/icons/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/apple-touch-icon.png', // آیکن مخصوص iOS
-            sizes: '180x180',
+            src: '/icons/icon-512x512.png',
+            sizes: '512x512',
             type: 'image/png',
-          },
-          {
-            src: '/favicon-32x32.png', // آیکن 32x32
-            sizes: '32x32',
-            type: 'image/png',
-          },
-          {
-            src: '/favicon-16x16.png', // آیکن 16x16
-            sizes: '16x16',
-            type: 'image/png',
-          },
-          {
-            src: '/favicon.ico', // آیکن favicon.ico
-            sizes: '16x16',
-            type: 'image/x-icon',
           },
         ],
       },

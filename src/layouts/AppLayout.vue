@@ -1,5 +1,5 @@
 <template>
-  <Layout class="h-screen overflow-y-hidden">
+  <Layout class="h-[100svh] overflow-y-hidden">
     <AppHeader />
     <AppMain />
     <div class="flex justify-around items-center gap-4 p-4 bg-primary-200 dark:bg-primary">

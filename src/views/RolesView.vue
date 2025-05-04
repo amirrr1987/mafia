@@ -1,10 +1,16 @@
 <template>
   <div class="p-4">
     <div class="grid grid-cols-2 gap-4">
-      <CheckboxGroup v-for="role in mafiaStore.roleList" :key="role.role">
-        <Checkbox class="">
+      <CheckboxGroup
+        v-model:value="checked"
+        v-for="(role, index) in mafiaStore.roleList"
+        :key="index"
+      >
+        <Checkbox>
           <RoleCard class="text-wrap" :title="role.label">
-            {{ truncate(role.description, { length: 100 }) }}
+            <div class="" @click="toggleLength(index)">
+              {{ truncate(role.description, { length: length }) }}
+            </div>
           </RoleCard>
         </Checkbox>
       </CheckboxGroup>
@@ -16,7 +22,17 @@ import RoleCard from '@/components/RoleCard.vue'
 import { useMafiaStore } from '@/stores/mafia.store'
 import { Checkbox, CheckboxGroup } from 'ant-design-vue/es'
 import { truncate } from 'lodash'
+import { ref } from 'vue'
 const mafiaStore = useMafiaStore()
+const checked = ref()
+const length = ref(10)
+const toggleLength = (index) => {
+  if (length.value === 100 && index == checked.value) {
+    length.value = 100000
+  } else {
+    length.value = 100
+  }
+}
 </script>
 <style lang="less">
 .ant-checkbox-group {

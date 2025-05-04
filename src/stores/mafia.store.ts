@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
-import { RoleEnum, SideEnum, type IRole } from '@/models/mafia.models'
+import { CivicRoleEnum, MafiaRoleEnum, SideEnum, type IRole } from '@/models/mafia.models'
 
 export const useMafiaStore = defineStore('mafia', () => {
   const userList = useLocalStorage<string[]>('userList', [])
@@ -24,84 +24,61 @@ export const useMafiaStore = defineStore('mafia', () => {
   const roleList = useLocalStorage<IRole[]>('roleList', [
     {
       label: 'رئیس مافیا',
-      role: RoleEnum.MAFIA_BOSS,
+      role: MafiaRoleEnum.MAFIA_BOSS,
       side: SideEnum.MAFIA,
       description: 'رهبر اصلی مافیا که در تصمیم‌گیری‌های شبانه نقش دارد.',
     },
     {
       label: 'مافیا',
-      role: RoleEnum.MAFIA,
+      role: MafiaRoleEnum.MAFIA,
       side: SideEnum.MAFIA,
       description: 'عضو تیم مافیا که در شب‌ها برای حذف شهروندان تصمیم‌گیری می‌کند.',
     },
     {
+      label: 'گروگانگیر',
+      role: MafiaRoleEnum.HOSTAGE_TAKER,
+      side: SideEnum.MAFIA,
+      description: 'هر شب می‌تواند یک بازیکن را گروگان بگیرد تا از توانایی‌اش استفاده نکند.',
+    },
+    {
+      label: 'مذاکره کننده',
+      role: MafiaRoleEnum.NEGOTIATOR,
+      side: SideEnum.MAFIA,
+      description: 'با صحبت و چانه‌زنی در طول بازی، سعی در گمراه‌کردن شهروندان دارد.',
+    },
+    {
       label: 'دکتر',
-      role: RoleEnum.DOCTOR,
+      role: CivicRoleEnum.DOCTOR,
       side: SideEnum.CIVIC,
       description: 'هر شب می‌تواند جان یک نفر را نجات دهد.',
       avatar: 'https://magerta.ir/wp-content/uploads/2020/04/new-doctor-card.jpg',
     },
     {
       label: 'کارآگاه',
-      role: RoleEnum.DETECTIVE,
+      role: CivicRoleEnum.DETECTIVE,
       side: SideEnum.CIVIC,
       description: 'هر شب نقش یک بازیکن را بررسی می‌کند.',
       avatar: 'https://magerta.ir/wp-content/uploads/2020/04/new-detective-card.jpg',
     },
     {
       label: 'شهروند',
-      role: RoleEnum.CIVILIAN,
+      role: CivicRoleEnum.CIVILIAN,
       side: SideEnum.CIVIC,
       description: 'نقش خاصی ندارد و باید با استدلال، مافیا را شناسایی کند.',
     },
     {
       label: 'تک‌تیرانداز',
-      role: RoleEnum.SNIPER,
+      role: CivicRoleEnum.SNIPER,
       side: SideEnum.CIVIC,
-      description: 'یک تیر دارد که می‌تواند فقط یک بار استفاده کند.',
+      description:
+        'یک بار در طول بازی می‌تواند بازیکنی را هدف قرار دهد. اگر درست بزند، زنده می‌ماند.',
       avatar: 'https://magerta.ir/wp-content/uploads/2020/04/new-sniper-card.jpg',
     },
     {
-      label: 'سایلنسر',
-      role: RoleEnum.SILENCER,
-      side: SideEnum.MAFIA,
-      description: 'می‌تواند یکی از بازیکنان را برای روز بعد ساکت کند.',
-    },
-    {
-      label: 'دلقک',
-      role: RoleEnum.JOKER,
-      side: SideEnum.NEUTRAL,
-      description: 'اگر در رأی‌گیری روزانه حذف شود، برنده بازی است.',
-    },
-    {
-      label: 'بادیگارد',
-      role: RoleEnum.BODYGUARD,
+      label: 'زره‌پوش',
+      role: CivicRoleEnum.BULLETPROOF,
       side: SideEnum.CIVIC,
-      description: 'از یک نفر محافظت می‌کند و در صورت حمله، به‌جای او کشته می‌شود.',
-    },
-    {
-      label: 'وکیل',
-      role: RoleEnum.LAWYER,
-      side: SideEnum.MAFIA,
-      description: 'نقش حمایتی برای اعضای مافیاست در زمان رأی‌گیری.',
-    },
-    {
-      label: 'پدرخوانده',
-      role: RoleEnum.GODFATHER,
-      side: SideEnum.MAFIA,
-      description: 'رهبر مخفی مافیا که برای کارآگاه بی‌گناه به‌نظر می‌رسد.',
-    },
-    {
-      label: 'پرستار',
-      role: RoleEnum.NURSE,
-      side: SideEnum.CIVIC,
-      description: 'در صورت مرگ دکتر، می‌تواند نقش او را ادامه دهد.',
-    },
-    {
-      label: 'روانشناس',
-      role: RoleEnum.PSYCHOLOGIST,
-      side: SideEnum.CIVIC,
-      description: 'می‌تواند نقش یکی از بازیکنان را برای یک شب غیرفعال کند.',
+      description: 'در برابر اولین حمله مافیا مقاوم است و زنده می‌ماند.',
     },
   ])
 

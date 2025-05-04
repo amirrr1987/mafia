@@ -21,9 +21,9 @@ export const useSettingsStore = defineStore('dongdong setting', () => {
     direction: DirectionEnum.RTL,
     language: LanguageEnum.FARSI,
     componentSize: ComponentSizeEnum.LARGE,
-    fontFamily: FontFamilyEnum.ENGLISH,
-    colorPrimary: '#2d93ff',
-    isDark: false,
+    fontFamily: FontFamilyEnum.FARSI,
+    colorPrimary: '#dc2626',
+    isDark: true,
     isCompact: false,
   })
 

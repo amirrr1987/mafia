@@ -6,14 +6,20 @@ type Callback = () => void
 export const useModal = () => {
   const isOpen = ref<boolean>(false)
 
+  const isPromise = (val: unknown): val is Promise<unknown> =>
+    typeof val === 'object' &&
+    val !== null &&
+    'then' in val &&
+    typeof (val as { then: unknown }).then === 'function'
+
   const invokeCallbacks = async (...callbacks: (Callback | Promise<void>)[]) => {
     for (const callback of callbacks) {
       if (isFunction(callback)) {
         const result = callback()
-        if (result instanceof Promise) {
-          await result // اینجا باید `await` کنیم تا اجرای toggle معطل بماند
+        if (isPromise(result)) {
+          await result
         }
-      } else if (callback instanceof Promise) {
+      } else if (isPromise(callback)) {
         await callback
       }
     }

@@ -108,7 +108,7 @@ export const useMafiaStore = defineStore('mafia', () => {
     })
   }
   const addRole = (role: IRole['role']) => {
-    roleList.value.push(role)
+    // roleList.value.push(role)
   }
   const removeRole = (role: string) => {
     const index = findRoleIndex(role)

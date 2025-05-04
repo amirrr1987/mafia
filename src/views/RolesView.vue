@@ -15,27 +15,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import AzButton from '@/components/AzButton.vue'
-import RadioGroupIcon from '@/components/RadioGroupIcon.vue'
-import { RoleTypeEnum } from '@/models/mafia.models'
 import { useMafiaStore } from '@/stores/mafia.store'
-import {
-  List,
-  ListItem,
-  Input,
-  Form,
-  FormItem,
-  Popconfirm,
-  message,
-  RadioGroup,
-  RadioButton,
-  Checkbox,
-  CheckboxGroup,
-  Avatar,
-} from 'ant-design-vue/es'
-import { ref } from 'vue'
+import { Checkbox, CheckboxGroup, Avatar } from 'ant-design-vue/es'
 import { Card } from 'ant-design-vue/es'
-import { Icon } from '@iconify/vue'
 const mafiaStore = useMafiaStore()
 </script>
 <style lang="less">
@@ -43,11 +25,10 @@ const mafiaStore = useMafiaStore()
   .ant-checkbox-wrapper {
     width: 100%;
     .ant-checkbox {
-      // display: none;
       @apply hidden;
 
       & + span {
-        width: 100%;
+        @apply w-full;
       }
     }
 
@@ -57,8 +38,6 @@ const mafiaStore = useMafiaStore()
           .ant-card-body {
             @apply rounded bg-primary;
           }
-
-          // background-color: red;
         }
       }
     }

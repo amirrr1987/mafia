@@ -39,12 +39,14 @@ export const useMafiaStore = defineStore('mafia', () => {
       role: RoleEnum.DOCTOR,
       side: SideEnum.CIVIC,
       description: 'هر شب می‌تواند جان یک نفر را نجات دهد.',
+      avatar: 'https://magerta.ir/wp-content/uploads/2020/04/new-doctor-card.jpg',
     },
     {
       label: 'کارآگاه',
       role: RoleEnum.DETECTIVE,
       side: SideEnum.CIVIC,
       description: 'هر شب نقش یک بازیکن را بررسی می‌کند.',
+      avatar: 'https://magerta.ir/wp-content/uploads/2020/04/new-detective-card.jpg',
     },
     {
       label: 'شهروند',
@@ -57,6 +59,7 @@ export const useMafiaStore = defineStore('mafia', () => {
       role: RoleEnum.SNIPER,
       side: SideEnum.CIVIC,
       description: 'یک تیر دارد که می‌تواند فقط یک بار استفاده کند.',
+      avatar: 'https://magerta.ir/wp-content/uploads/2020/04/new-sniper-card.jpg',
     },
     {
       label: 'سایلنسر',

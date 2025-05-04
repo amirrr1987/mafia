@@ -24,6 +24,6 @@ export interface IRole {
   avatar?: string
   label: string
   side: SideEnum
-  role: RoleEnum
+  role: MafiaRoleEnum | CivicRoleEnum
   description: string
 }
